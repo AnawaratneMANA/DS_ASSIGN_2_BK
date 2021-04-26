@@ -19,7 +19,7 @@ public class userController {
     private userRepository userRepo;
     //Create user Method
     @PostMapping("/user")
-    public ResponseEntity createUser(@RequestParam User user){
+    public ResponseEntity<?> createUser(@RequestParam User user){
         try{
             userRepo.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
