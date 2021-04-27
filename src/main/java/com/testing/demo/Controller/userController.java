@@ -4,10 +4,7 @@ import com.testing.demo.Repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //Main REST Controller.
 
@@ -19,7 +16,7 @@ public class userController {
     private userRepository userRepo;
     //Create user Method
     @PostMapping("/user")
-    public ResponseEntity<?> createUser(@RequestParam User user){
+    public ResponseEntity<?> createUser(@RequestBody User user){
         try{
             userRepo.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
