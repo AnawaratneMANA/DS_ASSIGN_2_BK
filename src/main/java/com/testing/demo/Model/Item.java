@@ -19,6 +19,7 @@ public class Item {
     @Id
     private String id;
     private String title;
+    private String price;
     private String description;
     private String image;
 
