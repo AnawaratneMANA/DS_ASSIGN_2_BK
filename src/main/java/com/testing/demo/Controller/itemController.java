@@ -69,5 +69,14 @@ public class itemController {
         }
     }
 
-
+    //Delete Item
+    @DeleteMapping("/item/{id}")
+    public ResponseEntity<?> deleteItem(@PathVariable("id") String id){
+        try{
+            itemRepo.deleteById(id);
+            return new ResponseEntity<>("Successfully deleted item " + id, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 }
