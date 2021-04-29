@@ -18,25 +18,13 @@ public class itemController {
     private itemRepository itemRepo;
 
     //Original Get All method.
-    @GetMapping("/item/original")
+    @GetMapping("/item")
     public ResponseEntity<?> getAllItems(){
         List<Item> items = itemRepo.findAll();
         if(items.size() > 0){
             return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
         }else{
             return new ResponseEntity<>("No items available", HttpStatus.NOT_FOUND);
-        }
-    }
-
-    //Modified method to return JSON objects.
-    @GetMapping("/item")
-    public List<Item> getAllItemsNew(){
-        List<Item> items = itemRepo.findAll();
-        if(items.size() > 0){
-            return items;
-        }else{
-            List<Item> empty = new List<Item>;
-            return empty;
         }
     }
 
