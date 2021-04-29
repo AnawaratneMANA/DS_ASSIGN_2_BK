@@ -10,20 +10,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class itemController {
 
     @Autowired
     private itemRepository itemRepo;
 
-    @GetMapping("/item")
+    //Original Get All method.
+    @GetMapping("/item/original")
     public ResponseEntity<?> getAllItems(){
         List<Item> items = itemRepo.findAll();
         if(items.size() > 0){
             return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
         }else{
             return new ResponseEntity<>("No items available", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //Modified method to return JSON objects.
+    @GetMapping("/item")
+    public List<Item> getAllItemsNew(){
+        List<Item> items = itemRepo.findAll();
+        if(items.size() > 0){
+            return items;
+        }else{
+            List<Item> empty = new List<Item>;
+            return empty;
         }
     }
 
@@ -38,6 +51,8 @@ public class itemController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
     //Get Single item
     @GetMapping("/item/{id}")
