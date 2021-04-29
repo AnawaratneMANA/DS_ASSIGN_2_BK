@@ -40,8 +40,6 @@ public class itemController {
         }
     }
 
-
-
     //Get Single item
     @GetMapping("/item/{id}")
     public ResponseEntity<?> getSingleItem(@PathVariable("id") String id){
