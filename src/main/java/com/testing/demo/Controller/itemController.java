@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class itemController {
 
     @Autowired
     private itemRepository itemRepo;
 
+    //Original Get All method.
     @GetMapping("/item")
     public ResponseEntity<?> getAllItems(){
         List<Item> items = itemRepo.findAll();
