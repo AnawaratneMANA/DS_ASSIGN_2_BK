@@ -18,7 +18,7 @@ public class itemController {
     private itemRepository itemRepo;
 
     //Original Get All method.
-    @GetMapping("/item")
+    @GetMapping("/displayitem")
     public ResponseEntity<?> getAllItems(){
         List<Item> items = itemRepo.findAll();
         if(items.size() > 0){
@@ -41,7 +41,7 @@ public class itemController {
     }
 
     //Get Single item
-    @GetMapping("/item/{id}")
+    @GetMapping("/getsingleitem/{id}")
     public ResponseEntity<?> getSingleItem(@PathVariable("id") String id){
         Optional<Item> itemOptional = itemRepo.findById(id);
         if(itemOptional.isPresent()){
@@ -52,7 +52,7 @@ public class itemController {
     }
 
     //Update item
-    @PutMapping("/item/{id}")
+    @PutMapping("/updateitem/{id}")
     public ResponseEntity<?> updateById(@PathVariable("id") String id, @RequestBody Item item){
         Optional<Item> itemOptional = itemRepo.findById(id);
         if(itemOptional.isPresent()){
@@ -71,7 +71,7 @@ public class itemController {
     }
 
     //Delete Item
-    @DeleteMapping("/item/{id}")
+    @DeleteMapping("/deleteitem/{id}")
     public ResponseEntity<?> deleteItem(@PathVariable("id") String id){
         try{
             itemRepo.deleteById(id);
