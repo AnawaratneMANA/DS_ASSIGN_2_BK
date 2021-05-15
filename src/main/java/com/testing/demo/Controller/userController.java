@@ -49,6 +49,26 @@ public class userController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage() , HttpStatus.OK);
         }
+    }
 
+    //Method to get the user Id
+    public ResponseEntity<?> getNameOfValidatedUser (@RequestBody LoginUser user){
+        String userId = "default";
+        try {
+            User object = userRepo.findUserByUsername(user.getUserName());
+            if(object != null) {
+                if(object.getPassWord1().contentEquals(user.getPassword())){
+                    userId = object.getId();
+                } else {
+                    userId = "Error";
+                }
+            } else
+            {
+                userId = "Error";
+            }
+            return new ResponseEntity<>(userId , HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage() , HttpStatus.OK);
+        }
     }
 }
