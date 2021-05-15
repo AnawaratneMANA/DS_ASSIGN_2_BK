@@ -52,6 +52,7 @@ public class userController {
     }
 
     //Method to get the user Id
+    @PostMapping("/getValdatedUserId")
     public ResponseEntity<?> getNameOfValidatedUser (@RequestBody LoginUser user){
         String userId = "default";
         try {
