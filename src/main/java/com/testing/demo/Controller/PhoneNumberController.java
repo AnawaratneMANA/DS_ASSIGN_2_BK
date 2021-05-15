@@ -39,7 +39,7 @@ public class PhoneNumberController {
             PhoneClass recentdetails = payment.get();
             recentdetails.setUserId(detail.getUserId() != null ? detail.getUserId() : recentdetails.getUserId());
             recentdetails.setPhone_Number(detail.getPhone_Number() != null ? detail.getPhone_Number() : recentdetails.getPhone_Number());
-            recentdetails.setAmounts(detail.getAmounts() != null ? detail.getAmounts() : recentdetails.getAmounts());
+            recentdetails.setAmount(detail.getAmount() != null ? detail.getAmount() : recentdetails.getAmount());
             recentdetails.setPin_Number(detail.getPin_Number() != 0 ? detail.getPin_Number() : recentdetails.getPin_Number());
             phoneClassRepository.save(recentdetails);
             return new ResponseEntity<>(recentdetails, HttpStatus.OK);

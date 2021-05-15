@@ -14,7 +14,7 @@ import java.util.Optional;
 @RestController
 public class CreditCardController {
     @Autowired
-    private  CreditCardRepository creditCardRepository;
+    private CreditCardRepository creditCardRepository;
 
     @PostMapping("/addCreditCardDetails")
     public String saveCreditCardDetail(@RequestBody CreditCardPayment detail){
@@ -37,10 +37,10 @@ public class CreditCardController {
         if (payment.isPresent()) {
             CreditCardPayment recentdetails = payment.get();
             recentdetails.setUserId(detail.getUserId() != null ? detail.getUserId() : recentdetails.getUserId());
-            recentdetails.setCreditCardUser(detail.getCreditCardUser() != null ? detail.getCreditCardUser() : recentdetails.getCreditCardNumber());
+            recentdetails.setCreditCardUser(detail.getCreditCardUser() != null ? detail.getCreditCardUser() : recentdetails.getCreditCardUser());
             recentdetails.setCreditCardNumber(detail.getCreditCardNumber() != null ? detail.getCreditCardNumber() : recentdetails.getCreditCardNumber());
             recentdetails.setAmount(detail.getAmount() != null ? detail.getAmount() : recentdetails.getAmount());
-            recentdetails.setCVC_Number(detail.getCVC_Number() != 0 ? detail.getCVC_Number() : recentdetails.getCVC_Number());
+            recentdetails.setCvc_Number(detail.getCvc_Number() != 0 ? detail.getCvc_Number() : recentdetails.getCvc_Number());
             creditCardRepository.save(recentdetails);
             return new ResponseEntity<>(recentdetails, HttpStatus.OK);
         }else {

@@ -11,14 +11,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Document(collection = "CreditCardTable")
+@Document(collection = "CreditCard")
 public class CreditCardPayment {
     @Id
     private String id;
     private String userId;
-    private String CreditCardNumber;
-    private String CreditCardUser;
-    private Double Amount;
-    private int CVC_Number;
+    private String creditCardNumber;
+    private String creditCardUser;
+    private String Amount;
+    private int cvc_Number;
 
 }

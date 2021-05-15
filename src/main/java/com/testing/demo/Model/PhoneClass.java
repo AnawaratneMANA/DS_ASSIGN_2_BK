@@ -16,6 +16,6 @@ public class PhoneClass {
     private String id;
     private String userId;
     private String Phone_Number;
-    private Double Amounts;
+    private String Amount;
     private int Pin_Number;
 }
