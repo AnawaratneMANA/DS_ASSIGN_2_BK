@@ -53,7 +53,7 @@ public class userController {
 
     //Method to get the user Id
     @PostMapping("/getValdatedUserId")
-    public ResponseEntity<?> getNameOfValidatedUser (@RequestBody LoginUser user){
+    public ResponseEntity<?> getValidateUser (@RequestBody LoginUser user){
         String userId = "default";
         try {
             User object = userRepo.findUserByUsername(user.getUserName());
@@ -68,6 +68,27 @@ public class userController {
                 userId = "Error";
             }
             return new ResponseEntity<>(userId , HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage() , HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/getValdatedUseremail")
+    public ResponseEntity<?> getValidateUserEmail (@RequestBody LoginUser user){
+        String email = "default";
+        try {
+            User object = userRepo.findUserByUsername(user.getUserName());
+            if(object != null) {
+                if(object.getPassWord1().contentEquals(user.getPassword())){
+                    email = object.getEmail();
+                } else {
+                    email = "Error";
+                }
+            } else
+            {
+                email = "Error";
+            }
+            return new ResponseEntity<>(email , HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage() , HttpStatus.OK);
         }
